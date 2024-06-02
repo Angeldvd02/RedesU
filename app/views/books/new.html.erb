@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center align-items-center container mt-5">
+	<div class="row p-4 text-light bg-dark">
+		<div class="col-sm-10 offset-sm-1">
+			<h1 class="my-4">New Book</h1>
+
+			<%= render 'form', book: @book %>
+
+			<%= link_to 'Back', :back %>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+  a.create_book{
+    color:#966b3a!important;
+  }
+</style>

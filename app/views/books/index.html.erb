@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h1 class="d-flex justify-content-center"> My books</h1>
+<div class="container-fluid">
+  <% @books.in_groups_of(4,false).each do |book_group| %>
+  <div class="row">
+    <% book_group.each do |book| %>
+    <div class="col-6 col-sm-4 col-xl-3  my-4">
+      <div class="card mw-25">
+        <div class="card-body">
+          <h4 class="card-title d-flex justify-content-center"><%= book.name %></h4>
+          <hr>
+          <ul class="list-group">
+            <li class="list-group-item"><%= link_to_if book.name != "Global", 'Edit', edit_book_path(book) %> </li>
+            <% if book.name == "Global"%>
+              <li class="list-group-item"><%= link_to 'Empty', book, method: :delete, data: { confirm: 'Empty book?' } %></li>
+            <% else %>
+             <li class="list-group-item"><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Delete book?' } %></li>
+            <% end %>
+            <li class="list-group-item"><%= link_to 'Show', book %></li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Created at: <%= book.created_at.strftime("%d/%m/%Y") %> </small>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <hr>
+  </div>
+  <% end %>
+</div>
+<style type="text/css">
+  a.books{
+    color:#966b3a!important;
+  }
+</style>
